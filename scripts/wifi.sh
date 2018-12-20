@@ -1,0 +1,2 @@
+modprobe wl
+modprobe brcmfmac
