@@ -1,6 +1,4 @@
 #!/bin/bash
 
-sudo cpupower frequency-set -g powersave
-sudo cpupower frequency-set -u 1800MHz
+sudo cpupower frequency-set -u 1.8GHz
 
-s-tui

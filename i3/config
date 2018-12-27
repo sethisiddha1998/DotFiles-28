@@ -16,11 +16,12 @@ set $mod Mod4
 font pango:monospace 8
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/reddragon.png
+exec --no-startup-id feh --bg-fill ~/Pictures/stripecity.png
 exec --no-startup-id xfce4-power-manager
 
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace 3; exec urxvt'
+
 
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -138,10 +139,12 @@ assign [class="(?!)discord"] $ws4
 for_window [class="Spotify"] move container to workspace 6
 for_window [class="Firefox"] move container to workspace 1
 for_window [class="(?!)discord"] move container to workspace 4
+assign [class="com.discordapp.Discord"] $ws4
+for_window [class="com.discordapp.Discord"] move container to workspace 4
 
 
 exec --no-startup-id firefox
-
+exec --no-startup-id spotify --force-device-scale-factor=1.5
 
 
 # reload the configuration file
@@ -182,8 +185,8 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 #bar {
 #        status_command i3status
-#        position top
-         font pango:DejaVu Sans Mono, Awesome 8        
+        #position bottom
+#        font pango:DejaVu Sans Mono, Awesome 8        
 #}
 
 
@@ -205,8 +208,8 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5 # decrease screen brightnes
 bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 #
 # # Media player controls
-bindsym XF86AudioPlay exec playerctl play
-bindsym XF86AudioPause exec playerctl pause
+bindsym XF86AudioPlay exec playerctl play-pause
+bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
