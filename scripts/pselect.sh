@@ -1,39 +1,42 @@
+
 #!/bin/bash
 
-PS3='Please Select Power Plan:'
-options=("Low" "Powersave" "Medium" "Balanced" "Performace" "Quit")
-select opt in "${options[@]}"
-do
-  case $opt in 
-    "Low")
-      echo "low"
-      pstate-frequency -S -p low
-      break
-      ;;
-    "Powersave")
-      echo "Powersave"
-      pstate-frequency -S -p powersave
-      break
-    ;;
-  "Medium")
-      echo "medium"
-      pstate-frequency -S -p medium
-      break
-    ;;
-  "Balanced")
-      echo "balanced"
-      pstate-frequency -S -p balanced
-      break
-    ;;
-  "Performance")
-      echo "performance"
-      pstate-frequency -S -p performance
-      break
-    ;;
-  "Quit")
-      break
-    ;;
-  *) echo "invalid option";;
-esac
-done
+HEIGHT=15
+WIDTH=40
+CHOICE_HEIGHT=4
+BACKTITLE="intel_pstate selector"
+TITLE="Powerplan Selector"
+MENU="Choose one of the following options:"
 
+OPTIONS=(1 "Balanced"
+         2 "Powersave"
+         3 "Medium"
+         4 "Performance")
+
+CHOICE=$(dialog --clear \
+                --backtitle "$BACKTITLE" \
+                --title "$TITLE" \
+                --menu "$MENU" \
+                $HEIGHT $WIDTH $CHOICE_HEIGHT \
+                "${OPTIONS[@]}" \
+                2>&1 >/dev/tty)
+
+clear
+case $CHOICE in
+  1)
+    echo "Balanced power plan selected"
+    sudo pstate-frequency -S -p balanced
+    ;;
+  2)
+    echo "Powersave power plan selected"
+    sudo pstate-frequency -S -p powersave
+    ;;
+  3)
+    echo "Medium power plan selected"
+    sudo pstate-frequency -S -p medium
+    ;;
+  4)
+    echo "Performance power plan selected"
+    sudo pstate-frequency -S -p performance
+    ;;
+esac
