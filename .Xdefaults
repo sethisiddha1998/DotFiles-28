@@ -17,7 +17,7 @@ Xft.hintstyle:              hintslight
 
 URxvt.depth:                32
 URxvt.geometry:             90x30
-URxvt.transparent:          false
+URxvt.transparent:          true
 URxvt.fading:               0
 ! URxvt.urgentOnBell:         true
 ! URxvt.visualBell:           true
@@ -27,9 +27,9 @@ URxvt.internalBorder:       3
 URxvt.lineSpace:            0
 
 ! Fonts
-URxvt.allow_bold:           false
-URxvt*font: xft:DejaVu Sans Mono Nerd Font:pixelsize=22
-URxvt*boldFont: xft:DejaVu Sans Mono Nerd Font:pixelsize=22
+URxvt.allow_bold:           true
+URxvt*font: xft:DejaVu Sans Mono Nerd Font:pixelsize=14
+URxvt*boldFont: xft:DejaVu Sans Mono Nerd Font:pixelsize=14
 
 ! Fix font space
 URxvt*letterSpace: -1

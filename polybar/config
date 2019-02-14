@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #222
+background = #000000
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #dfdfdf
@@ -27,14 +27,13 @@ primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
-[bar/example]
-;monitor = ${env:MONITOR:HDMI-1}
+[bar/bottom]
 width = 100%
-height = 27
-;offset-x = 1%
-;offset-y = 1%
+height = 25
 radius = 6.0
-fixed-center = false
+fixed-center = true
+
+bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -52,17 +51,59 @@ module-margin-left = 1
 module-margin-right = 1
 
 font-0 = hack:pixelsize=10;1
-font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = wuncon siji:pixelsize=12;1
-font-3 = Font Awesome 5 Free:Solid:pixelsize=10;1
-font-4 = Font Awesome 5 Brands:pixelsize=10;1
-font-5 = fontawesome-regular:size=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-1 = wuncon siji:pixelsize=12;1
+font-2 = Font Awesome 5 Free:Solid:pixelsize=10;1
+font-3 = Font Awesome 5 Brands:pixelsize=10;1
+font-4 = fontawesome-regular:size=10;1
+
+modules-left = 
+modules-center = 
+modules-right = cmus ip cpu-temp
+
+tray-position = left
+tray-detached = false
+tray-padding = 5
+;tray-background = #0063ff
+
+
+
+[bar/example]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 27
+;offset-x = 1%
+;offset-y = 1%
+radius = 6.0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 1
+
+font-0 = hack:pixelsize=10;1
+;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-1 = wuncon siji:pixelsize=12;1
+font-2 = Font Awesome 5 Free:Solid:pixelsize=10;1
+font-3 = Font Awesome 5 Brands:pixelsize=10;1
+font-4 = fontawesome-regular:size=10;1
 
 modules-left = bspwm i3
-modules-center = mpd xwindow date spotify1
-modules-right = pulseaudio xkeyboard wlan battery powermenu
+modules-center = mpd xwindow spotify1
+modules-right = pulseaudio xkeyboard wlan battery date powermenu
 
-tray-position = right
+;tray-position = right
 tray-detached = false
 tray-padding = 5
 ;tray-background = #0063ff
@@ -83,6 +124,7 @@ cursor-scroll = ns-resize
 
 [module/xwindow]
 type = internal/xwindow
+format-underline = #ecedde
 label = %title:0:30:...%
 
 [module/xkeyboard]
@@ -163,7 +205,8 @@ label-mode-background = ${colors.primary}
 ; focused = Active workspace on focused monitor
 label-focused = %icon% 
 label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
+label-focused-underline = #0cc98d
+;label-focused-underline = ${module/bspwm.label-focused-underline}
 label-focused-padding = ${module/bspwm.label-focused-padding}
 
 ; unfocused = Inactive workspace on any monitor
@@ -349,7 +392,7 @@ bar-volume-empty-foreground = ${colors.foreground-alt}
 type = internal/battery
 battery = CMB0
 adapter = AC0
-full-at = 85
+full-at = 100
 
 format-charging = <animation-charging> <label-charging>
 format-charging-underline = #a3c725
@@ -410,20 +453,9 @@ label-separator = |
 label-separator-foreground = ${colors.foreground-alt}
 
 menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
+menu-0-0-exec = systemctl reboot
 menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
-
+menu-0-1-exec = systemctl poweroff
 
 
 [settings]
@@ -453,3 +485,42 @@ format-underline = #0f0
 format-prefix = " "
 format-prefix-foreground = #0f0
 label = %output:0:50%
+
+[module/cpu-temp]
+type = custom/script
+exec = ~/.config/polybar/scripts/tempcores.sh
+interval = 2
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-padding = 2
+format-underline = #c90b2b
+
+[module/ip]
+type = custom/script
+exec = ~/.config/polybar/scripts/pub-ip.sh
+interval = 5
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #eaf4a6
+format-prefix = " "
+
+[module/anyconnect]
+type = custom/script
+exec = ~/scripts/vpn-anyconnect-status.sh
+interval = 5
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #eaf4a6
+
+
+[module/cmus]
+type = custom/script
+exec = ~/scripts/player-cmus.sh
+interval = 3
+
+format-foreground = ${colors.foreground}
+format-background = ${colors.background}
+format-underline = #3695e2
