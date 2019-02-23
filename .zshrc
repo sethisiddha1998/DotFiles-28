@@ -113,3 +113,6 @@ prompt_context() {
 alias lock="~/scripts/lock.sh"
 alias i3config="vim ~/.config/i3/config"
 alias polyconfig="vim ~/.config/polybar/config"
+alias kittyconfig="vim ~/.config/kitty/kitty.conf"
+alias bspwmconfig="vim ~/.config/bspwm/bspwmrc"
+alias sxhkdconfig="vim ~/.config/sxhkd/sxhkdrc"

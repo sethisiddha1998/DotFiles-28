@@ -1,20 +1,3 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;==========================================================
 
 [colors]
 ;background = ${xrdb:color0:#222}
@@ -28,9 +11,11 @@ secondary = #e60053
 alert = #bd2c40
 
 [bar/bottom]
-width = 100%
+width = 98%
 height = 25
 radius = 6.0
+offset-x = 1%
+offset-y = 1%
 fixed-center = true
 
 bottom = true
@@ -44,7 +29,7 @@ line-color = #f00
 border-size = 0
 border-color = #00000000
 
-padding-left = 0
+padding-left = 4
 padding-right = 2
 
 module-margin-left = 1
@@ -59,21 +44,21 @@ font-4 = fontawesome-regular:size=10;1
 
 modules-left = 
 modules-center = 
-modules-right = cmus ip cpu-temp
+modules-right = pulseaudio ip cpu-temp
 
 tray-position = left
 tray-detached = false
-tray-padding = 5
+tray-padding = 1
 ;tray-background = #0063ff
 
 
 
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 100%
+width = 98%
 height = 27
-;offset-x = 1%
-;offset-y = 1%
+offset-x = 1%
+offset-y = 1%
 radius = 6.0
 fixed-center = true
 
@@ -101,7 +86,7 @@ font-4 = fontawesome-regular:size=10;1
 
 modules-left = bspwm i3
 modules-center = mpd xwindow spotify1
-modules-right = pulseaudio xkeyboard wlan battery date powermenu
+modules-right = xkeyboard wlan battery date powermenu
 
 ;tray-position = right
 tray-detached = false
@@ -174,6 +159,18 @@ label-empty-padding = 2
 
 ; Separator in between workspaces
 ; label-separator = |
+
+
+ws-icon-0 = 1;
+ws-icon-1 = 2;
+ws-icon-2 = 3;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
+ws-icon-6 = 7;
+ws-icon-7 = 8;
+ws-icon-8 = 9;
+ws-icon-9 = 10;
 
 [module/i3]
 type = internal/i3

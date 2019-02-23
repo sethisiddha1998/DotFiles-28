@@ -9,17 +9,21 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
-exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
-exec_always --no-startup-id gnome-power-manager
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id gnome-flashback
+#exec --no-startup-id /usr/lib/gnome-settings-daemon/gsd-xsettings
+#exec_always --no-startup-id gnome-power-manager
+#exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+#exec --no-startup-id gnome-flashback
 
 exec_always --no-startup-id $HOME/scripts/tap-to-click.sh
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
-exec_always --no-startup-id feh --bg-fill $HOME/Pictures/afternoon-glow-1920×1080.jpg
+exec_always --no-startup-id "feh --bg-fill $HOME/Pictures/horizon-lake-suwa-1920×1080.png"
 
 exec --no-startup-id i3-msg 'workspace 2; exec urxvt'
 exec --no-startup-id i3-msg 'workspace 3; exec urxvt'
+
+exec_always --no-startup-id setxkbmap -layout gb -option caps:escape
+
+exec --no-startup-id "xfce4-power-manager"
 
 
 
@@ -151,10 +155,12 @@ bindsym $mod+Shift+0 move container to workspace $ws10
 assign [class="Firefox"] $ws1
 assign [class="Spotify"] $ws5
 assign [class="discord"] $ws4
+assign [class="eclipse"] $ws3
 
 for_window [class="Spotify"] move container to workspace 5
 for_window [class="Firefox"] move container to workspace 1
 for_window [class="discord"] move container to workspace 4
+for_window [class="eclipse"] move container to workspace 3
 exec --no-startup-id firefox
 exec --no-startup-id spotify 
 
@@ -216,6 +222,4 @@ bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume 0 -5%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute 0 toggle 
 
 
-exec_always --no-startup-id xmodmap -e "clear lock"
-exec_always --no-startup-id xmodmap -e "keysym Caps_Lock = Escape" #set caps_lock as escape
 
